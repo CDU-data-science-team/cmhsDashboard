@@ -1,0 +1,15 @@
+Package: cmhsDashboard
+Title: Community mental health survey dashaboard
+Version: 0.0.0.9000
+Authors@R: person('Chris', 'Beeley', email = 'chris.beeley@gmail.com', role = c('cre', 'aut'))
+Description: This is a Shiny (golem) dashboard which 
+  allows trusts to interactively explore their scores in the community 
+  mental health survey
+License: MIT + file LICENSE
+Imports: 
+    config,
+    golem,
+    shiny
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.1
