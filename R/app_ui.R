@@ -3,14 +3,35 @@
 #' @param request Internal parameter for `{shiny}`. 
 #'     DO NOT REMOVE.
 #' @import shiny
+#' @import shinydashboard
 #' @noRd
 app_ui <- function(request) {
   tagList(
     # Leave this function for adding external resources
     golem_add_external_resources(),
     # List the first level UI elements here 
-    fluidPage(
-      h1("cmhsDashboard")
+    dashboardPage(
+      dashboardHeader(title = "CMHS dashboard"),
+      dashboardSidebar(
+        sidebarMenu(
+          menuItem("Trust view", tabName = "trust", icon = icon("hospital-user")),
+          
+          menuItem("Question view", tabName = "question", icon = icon("question"))
+        )
+      ),
+      dashboardBody(
+        tabItems(
+          
+          tabItem(tabName = "trust",
+                  mod_trust_view_ui("trust_view_ui_1"),
+          ),
+          
+          tabItem(tabName = "question",
+                  mod_question_view_ui("question_view_ui_1")
+          )
+        ),
+        p(HTML("<a href = 'www.cqc.org.uk/cmhsurvey'>All content cqc.org.uk/cmhsurvey</a>"))
+      )
     )
   )
 }
@@ -28,7 +49,7 @@ golem_add_external_resources <- function(){
   add_resource_path(
     'www', app_sys('app/www')
   )
- 
+  
   tags$head(
     favicon(),
     bundle_resources(
