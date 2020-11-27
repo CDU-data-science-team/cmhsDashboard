@@ -33,7 +33,7 @@ mod_question_view_server <- function(input, output, session){
                     dplyr::arrange(desc(.data[[input$question]])),
                   options = list(
                     pageLength = 20,
-                    lengthMenu = c(20, 50, 100))
+                    lengthMenu = c(20, 50, 100)), rownames = FALSE
     ) %>% 
       DT::formatRound(input$question)
   })

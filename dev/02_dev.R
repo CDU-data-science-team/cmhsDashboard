@@ -25,6 +25,7 @@ usethis::use_pipe()
 ## Create a module infrastructure in R/
 golem::add_module( name = "trust_view" ) # Name of the module
 golem::add_module( name = "question_view" ) # Name of the module
+golem::add_module( name = "test_module" ) # Name of the module
 
 ## Add helper functions ----
 ## Creates ftc_* and utils_*
