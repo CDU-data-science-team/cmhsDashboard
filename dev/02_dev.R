@@ -15,7 +15,7 @@
 
 ## Dependencies ----
 ## Add one line by package you want to add as dependency
-usethis::use_package( "readODS" )
+usethis::use_package( "ggplot2" )
 
 # use pipe
 
