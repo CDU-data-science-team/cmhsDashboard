@@ -14,9 +14,9 @@ app_ui <- function(request) {
       dashboardHeader(title = "CMHS dashboard"),
       dashboardSidebar(
         sidebarMenu(
-          menuItem("Trust view", tabName = "trust", icon = icon("hospital-user")),
+          menuItem("Trust view", tabName = "trust", icon = icon("hospital-user"))
           
-          menuItem("Question view", tabName = "question", icon = icon("question"))
+          # menuItem("Question view", tabName = "question", icon = icon("question"))
         )
       ),
       dashboardBody(

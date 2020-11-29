@@ -7,5 +7,12 @@ A {golem} powered dashboard which incorporates data from the community
 mental health survey freely available here
 [www.cqc.org.uk/cmhsurvey](CQC%20survey%20page).
 
+Please install by running
+
+``` r
+# install.packages("remotes")
+remotes::install_github("CDU-data-science-team/cmhsDashboard")
+```
+
 See a [live version
 here](https://involve.nottshc.nhs.uk:8443/cmhs_dashboard/)

@@ -17,4 +17,13 @@ knitr::opts_chunk$set(
 
 A {golem} powered dashboard which incorporates data from the community mental health survey freely available here [www.cqc.org.uk/cmhsurvey](CQC survey page).
 
+Please install by running
+
+```{r eval = FALSE}
+
+# install.packages("remotes")
+remotes::install_github("CDU-data-science-team/cmhsDashboard")
+
+```
+
 See a [live version here](https://involve.nottshc.nhs.uk:8443/cmhs_dashboard/)

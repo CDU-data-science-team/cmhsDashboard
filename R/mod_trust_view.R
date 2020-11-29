@@ -31,7 +31,8 @@ mod_trust_view_ui <- function(id){
       column(4,
              DT::dataTableOutput(ns("trustView"))),
       
-      column(6, plotOutput(ns("questionView"), height = "600px"))
+      column(6, plotOutput(ns("trustGraph"), height = "600px"),
+             plotOutput(ns("questionView"), height = "600px"))
     )
   )
 }
@@ -55,7 +56,23 @@ mod_trust_view_server <- function(id){
         dplyr::left_join(all_names, by = c("Question" = "code")) %>% 
         dplyr::filter(grepl(input$questionSection, Question)) %>% 
         tibble::column_to_rownames(var = "Question") %>% 
-        dplyr::select(Question = name, everything())
+        dplyr::select(Question = name, everything()) %>% 
+        dplyr::arrange(Rank)
+    })
+    
+    output$trustGraph <- renderPlot({
+      
+      df %>% 
+        dplyr::filter(Trustname == input$trust) %>%
+        tidyr::pivot_longer(cols = -Trustname) %>% 
+        tidyr::separate(col = name, sep = 5, into = c("type", "number")) %>% 
+        tidyr::pivot_wider(names_from = c(type), values_from = value) %>% 
+        purrr::set_names(c("Trust", "Question", "Mean score", "Rank")) %>%  
+        dplyr::filter(grepl(input$questionSection, Question)) %>% 
+        ggplot2::ggplot(ggplot2::aes(x = reorder(Question, `Mean score`), y = `Mean score`)) +
+          ggplot2::geom_bar(stat = "identity") + ggplot2::coord_flip() + 
+          ggplot2::ylab("Score") + ggplot2::xlab("Question")
+        
     })
     
     output$trustView <- DT::renderDT({
@@ -84,9 +101,13 @@ mod_trust_view_server <- function(id){
         purrr::set_names(c("Trustname", "Question", "Mean score", "Rank")) %>%  
         dplyr::left_join(all_names, by = c("Question" = "code")) %>% 
         dplyr::select(Trust = Trustname, `Mean score`) %>% 
-        ggplot2::ggplot(ggplot2::aes(x = reorder(Trust, `Mean score`), y = `Mean score`)) +
-        ggplot2::geom_bar(stat = "identity") +
-        ggplot2::coord_flip() + ggplot2::ylab("Trust")
+        ggplot2::ggplot(ggplot2::aes(x = reorder(Trust, `Mean score`), y = `Mean score`,
+                        fill = factor(ifelse(Trust == input$trust, 
+                                             "Highlighted", 
+                                             "Normal")))) +
+        ggplot2::geom_bar(stat = "identity", show.legend = FALSE) +
+        ggplot2::coord_flip() + ggplot2::ylab("Score") +
+        ggplot2::xlab("Trust")
     })
   })
 }
