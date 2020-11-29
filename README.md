@@ -14,5 +14,12 @@ Please install by running
 remotes::install_github("CDU-data-science-team/cmhsDashboard")
 ```
 
+And to run the application
+
+``` r
+library(cmhsDashboard)
+run_app()
+```
+
 See a [live version
 here](https://involve.nottshc.nhs.uk:8443/cmhs_dashboard/)
