@@ -4,8 +4,8 @@
 # cmhsDashboard
 
 A {golem} powered dashboard which incorporates data from the community
-mental health survey freely available here
-[www.cqc.org.uk/cmhsurvey](CQC%20survey%20page).
+mental health survey freely available here: [CQC survey
+page](https://www.cqc.org.uk/publications/surveys/community-mental-health-survey-2020).
 
 Please install by running
 
