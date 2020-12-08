@@ -16,7 +16,6 @@ app_ui <- function(request) {
         sidebarMenu(
           menuItem("Trust view", tabName = "trust", icon = icon("hospital-user"))
           
-          # menuItem("Question view", tabName = "question", icon = icon("question"))
         )
       ),
       dashboardBody(
@@ -24,10 +23,6 @@ app_ui <- function(request) {
           
           tabItem(tabName = "trust",
                   mod_trust_view_ui("trust_view_ui_1"),
-          ),
-          
-          tabItem(tabName = "question",
-                  mod_question_view_ui("question_view_ui_1")
           )
         ),
         p(HTML("<a href = 'www.cqc.org.uk/cmhsurvey'>All content cqc.org.uk/cmhsurvey</a>"))
