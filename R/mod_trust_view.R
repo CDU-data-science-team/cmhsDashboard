@@ -72,7 +72,6 @@ mod_trust_view_server <- function(id){
         ggplot2::ggplot(ggplot2::aes(x = reorder(Question, `Mean score`), y = `Mean score`)) +
           ggplot2::geom_bar(stat = "identity") + ggplot2::coord_flip() + 
           ggplot2::ylab("Score") + ggplot2::xlab("Question")
-        
     })
     
     output$trustView <- DT::renderDT({

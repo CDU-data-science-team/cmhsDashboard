@@ -14,8 +14,9 @@ app_ui <- function(request) {
       dashboardHeader(title = "CMHS dashboard"),
       dashboardSidebar(
         sidebarMenu(
-          menuItem("Trust view", tabName = "trust", icon = icon("hospital-user"))
+          menuItem("Trust view", tabName = "trust", icon = icon("hospital-user")),
           
+          menuItem("Trend view", tabName = "trend", icon = icon("chart-line"))
         )
       ),
       dashboardBody(
@@ -23,6 +24,9 @@ app_ui <- function(request) {
           
           tabItem(tabName = "trust",
                   mod_trust_view_ui("trust_view_ui_1"),
+          ),
+          tabItem(tabName = "trend",
+                  mod_trend_module_ui("trend_module_ui_1"),
           )
         ),
         p(HTML("<a href = 'www.cqc.org.uk/cmhsurvey'>All content cqc.org.uk/cmhsurvey</a>"))
