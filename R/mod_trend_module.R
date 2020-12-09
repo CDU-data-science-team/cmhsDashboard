@@ -63,15 +63,12 @@ mod_trend_module_server <- function(id){
         dplyr::arrange(desc(score_2020)) %>% 
         ggplot2::ggplot(ggplot2::aes(x = Question, 
                                      xend = Question,
-                                     y = score_2020, yend = score_2019,
+                                     y = score_2019, yend = score_2020,
                                      colour = change, group = change)) +
-        ggplot2::geom_segment() + ggplot2::scale_color_manual(limits = c("Better", "Worse"),
+        ggplot2::geom_segment(arrow = ggplot2::arrow()) + ggplot2::scale_color_manual(limits = c("Better", "Worse"),
                                                               values = c("green", "red")) +
-        ggplot2::geom_point(colour = "black", shape = 1) +
-        ggplot2::geom_point(ggplot2::aes(x = Question, y = score_2019), 
-                            colour = "black", shape = 16) +
+        ggplot2::geom_point(colour = "black") +
         ggplot2::coord_flip() + ggplot2::theme_minimal() +
-        ggplot2::ggtitle("Hollow: 2020 data. Filled: 2019 data") +
         ggplot2::ylab(graph_type)
     })
   })
